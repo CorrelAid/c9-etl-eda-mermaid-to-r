@@ -94,7 +94,7 @@ this builds a "tunnel" from your local machine on port 5555 to the port 3306 (th
 #### MacOS/Linux/Windows with WSL or working SSH 
 If you have:
 
-- MacOS
+- MacOS 
 - Linux
 - a Windows machine but have a way to run SSH commands in the console (e.g. in [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install))
 
