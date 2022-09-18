@@ -1,0 +1,41 @@
+graph LR
+    start([Migrationshintergrund?]) --> migH
+        subgraph 1. Phase
+        migH{"Welche der folgenden Aussagen trifft auf Sie zu? <br/>
+        Mehrfachantworten sind möglich."} 
+        end
+            subgraph Kein Migrationshintergrund
+            migH -.-> SQ001[Sie besitzen die deutsche Staatsbürgerschaft.]
+            migH -.-> SQ008[nichts davon trifft zu]
+            end
+        subgraph Möglichkeiten
+        migH -.-> SQ002["Sie selbst sind nach 1955 auf das heutige Gebiet <br/>
+        der Bundesrepublik Deutschland zugewandert, eingebürgert oder haben <br/>
+        eine nichtdeutsche Staatsangehörigkeit."]
+        migH -.-> SQ003["Mindestens ein Elternteil ist nach 1955 auf das heutige <br/>
+        Gebiet der Bundesrepublik Deutschland zugewandert, eingebürgert oder haben <br/>
+        eine nichtdeutsche Staatsangehörigkeit."]
+        migH -.-> SQ004["Mindestens ein Großelternteil ist nach 1955 aus einem anderen <br/>
+        Land auf das heutige Gebiet der Bundesrepublik zugewandert, eingebürgert oder <br/>
+        hat eine nichtdeutsche Staatsangehörigkeit."]
+        migH -.-> SQ005["Sie selbst sind als Schutzsuchende*r unter Berufung auf <br/>
+        humanitäre Gründe nach Deutschland geflohen."]
+        migH -.-> SQ006["Mindestens ein Elternteil ist als Schutzsuchende*r unter <br/>
+        Berufung auf humanitäre Gründe nach Deutschland geflohen."]
+        migH -.-> SQ007["Mindestens ein Großelternteil ist als Schutzsuchende*r <br/>
+        unter Berufung auf humanitäre Gründe nach Deutschland geflohen."]
+        end
+            subgraph Familie
+            SQ003 & SQ006 --> migfam1["Familiärer Migrationshintergrund (1. G)"]
+            SQ004 & SQ007 --> migfam2["Familiärer Migrationshintergrund (2. G)"]
+            end
+                subgraph Eigene Erfahrung
+                SQ002 & SQ005 --> migeig[Eigener Migrationshintergrund]
+                SQ005 --> fluchteigen[Eigener Fluchthintergrund]
+                end
+    SQ001 & SQ008 --> kmh[Kein Migrationshintergrund]
+    subgraph Migrationshintergrund
+    migeig --> mh[Migrationshintergrund]
+    migfam1 --> mh
+    fluchteigen --> mh
+    end
